@@ -1,0 +1,722 @@
+options:
+  parameters:
+    author: "Crist\xF3v\xE3o Rufino"
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: hb
+    hier_block_src_path: '.:'
+    id: rs_ber_generator2
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: RS BER Generator2
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: analog_random_uniform_source_x_0
+  id: analog_random_uniform_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maximum: '2'
+    maxoutbuf: '0'
+    minimum: '0'
+    minoutbuf: '0'
+    seed: '0'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [56, 292.0]
+    rotation: 0
+    state: true
+- name: pad_sink_00
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out0
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 76.0]
+    rotation: 0
+    state: true
+- name: pad_sink_01
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out1
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 124.0]
+    rotation: 0
+    state: true
+- name: pad_sink_02
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out2
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 172.0]
+    rotation: 0
+    state: true
+- name: pad_sink_03
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out3
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 220.0]
+    rotation: 0
+    state: true
+- name: pad_sink_04
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out4
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 268.0]
+    rotation: 0
+    state: true
+- name: pad_sink_05
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out5
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 316.0]
+    rotation: 0
+    state: true
+- name: pad_sink_06
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out6
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 364.0]
+    rotation: 0
+    state: true
+- name: pad_sink_07
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out7
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 412.0]
+    rotation: 0
+    state: true
+- name: pad_sink_08
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out8
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 460.0]
+    rotation: 0
+    state: true
+- name: pad_sink_09
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out9
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 508.0]
+    rotation: 0
+    state: true
+- name: pad_sink_10
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out10
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 556.0]
+    rotation: 0
+    state: true
+- name: pad_sink_11
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out11
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 604.0]
+    rotation: 0
+    state: true
+- name: pad_sink_12
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out12
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 652.0]
+    rotation: 0
+    state: true
+- name: pad_sink_13
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out13
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 700.0]
+    rotation: 0
+    state: true
+- name: pad_sink_14
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out14
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 748.0]
+    rotation: 0
+    state: true
+- name: pad_sink_15
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out15
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1400, 796.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-0
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 124.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_0
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-.5
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 220.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_0_0
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-1.5
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 412.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_0_0_0
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-3.5
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 796.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_0_1
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-2.5
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 604.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_1
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-1
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 316.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_1_0
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-3
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 700.0]
+    rotation: 0
+    state: true
+- name: rs_ber_one_stage_0_2
+  id: rs_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1136, 508.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [288, 308.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 172.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 268.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 748.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 556.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_2
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 220.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_2_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 508.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_2_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 796.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 364.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 76.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 316.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1_1_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 604.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_2
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 460.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_3
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1200, 652.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_4
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 124.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_4_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 412.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_4_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [880, 700.0]
+    rotation: 0
+    state: true
+
+connections:
+- [analog_random_uniform_source_x_0, '0', virtual_sink_0, '0']
+- [rs_ber_one_stage_0, '0', pad_sink_01, '0']
+- [rs_ber_one_stage_0_0, '0', pad_sink_03, '0']
+- [rs_ber_one_stage_0_0_0, '0', pad_sink_07, '0']
+- [rs_ber_one_stage_0_0_0_0, '0', pad_sink_15, '0']
+- [rs_ber_one_stage_0_0_1, '0', pad_sink_11, '0']
+- [rs_ber_one_stage_0_1, '0', pad_sink_05, '0']
+- [rs_ber_one_stage_0_1_0, '0', pad_sink_13, '0']
+- [rs_ber_one_stage_0_2, '0', pad_sink_09, '0']
+- [virtual_source_0, '0', pad_sink_02, '0']
+- [virtual_source_0_0, '0', pad_sink_04, '0']
+- [virtual_source_0_0_0, '0', pad_sink_14, '0']
+- [virtual_source_0_0_1, '0', pad_sink_10, '0']
+- [virtual_source_0_0_2, '0', rs_ber_one_stage_0_0, '0']
+- [virtual_source_0_0_2_0, '0', rs_ber_one_stage_0_2, '0']
+- [virtual_source_0_0_2_1, '0', rs_ber_one_stage_0_0_0_0, '0']
+- [virtual_source_0_1, '0', pad_sink_06, '0']
+- [virtual_source_0_1_0, '0', pad_sink_00, '0']
+- [virtual_source_0_1_1, '0', rs_ber_one_stage_0_1, '0']
+- [virtual_source_0_1_1_0, '0', rs_ber_one_stage_0_0_1, '0']
+- [virtual_source_0_2, '0', pad_sink_08, '0']
+- [virtual_source_0_3, '0', pad_sink_12, '0']
+- [virtual_source_0_4, '0', rs_ber_one_stage_0, '0']
+- [virtual_source_0_4_0, '0', rs_ber_one_stage_0_0_0, '0']
+- [virtual_source_0_4_1, '0', rs_ber_one_stage_0_1_0, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.8.0
