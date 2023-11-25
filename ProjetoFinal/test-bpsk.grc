@@ -61,7 +61,7 @@ blocks:
     bus_structure: null
     coordinate: [920, 444.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: analog_noise_source_x_0
   id: analog_noise_source_x
   parameters:
@@ -117,7 +117,7 @@ blocks:
     bus_structure: null
     coordinate: [984, 356.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_add_xx_0
   id: blocks_add_xx
   parameters:
@@ -170,7 +170,7 @@ blocks:
     bus_structure: null
     coordinate: [976, 260.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_float_to_complex_0
   id: blocks_float_to_complex
   parameters:
@@ -186,7 +186,7 @@ blocks:
     bus_structure: null
     coordinate: [1112, 416.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_interleaved_char_to_complex_0
   id: blocks_interleaved_char_to_complex
   parameters:
@@ -379,6 +379,43 @@ blocks:
     coordinate: [520, 660.0]
     rotation: 0
     state: enabled
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from gnuradio import gr\n\n\nclass BPSK_Encoder_Block(gr.sync_block):  # other\
+      \ base classes are basic_block, decim_block, interp_block\n    \"\"\"Embedded\
+      \ Python Block example - a simple multiply const\"\"\"\n\n    def __init__(self,\
+      \ example_param=1.0):  # only default arguments here\n        \"\"\"arguments\
+      \ to this function show up as parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n\
+      \            self,\n            name='Embedded Python Block',   # will show\
+      \ up in GRC\n            in_sig=[np.byte],\n            out_sig=[np.complex64]\n\
+      \        )\n        # if an attribute with the same name as a parameter is found,\n\
+      \        # a callback is registered (properties work, too).\n        self.example_param\
+      \ = example_param\n\n    def work(self, input_items, output_items):\n      \
+      \  \"\"\"example: multiply with constant\"\"\"\n        \n        for i, item\
+      \ in enumerate(input_items):\n            if item == 0:\n                output_items[0][i]\
+      \ = -1.0\n            else:\n                output_items[0][i] = 1.0\n\n  \
+      \      return len(output_items[0])\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    example_param: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Embedded Python Block', 'BPSK_Encoder_Block', [('example_param',
+      '1.0')], [('0', 'byte', 1)], [('0', 'complex', 1)], 'Embedded Python Block example
+      - a simple multiply const', ['example_param'])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1120, 108.0]
+    rotation: 0
+    state: true
 - name: qtgui_const_sink_x_0
   id: qtgui_const_sink_x
   parameters:
@@ -619,9 +656,11 @@ connections:
 - [blocks_stream_to_vector_0_1, '0', dtv_dvbt_reed_solomon_enc_0_0, '0']
 - [blocks_throttle2_0, '0', blocks_null_sink_0, '0']
 - [blocks_vector_to_stream_0, '0', blocks_char_to_float_0, '0']
+- [blocks_vector_to_stream_0, '0', epy_block_0, '0']
 - [blocks_vector_to_stream_0_0, '0', blocks_interleaved_char_to_complex_0, '0']
 - [dtv_dvbt_reed_solomon_enc_0, '0', blocks_vector_to_stream_0, '0']
 - [dtv_dvbt_reed_solomon_enc_0_0, '0', blocks_vector_to_stream_0_0, '0']
+- [epy_block_0, '0', blocks_add_xx_0, '0']
 - [virtual_source_0, '0', blocks_add_xx_0, '1']
 - [virtual_source_0_0, '0', blocks_add_xx_0_0, '1']
 
