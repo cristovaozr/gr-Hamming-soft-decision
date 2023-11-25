@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ESSE FOI O SEGREDO DO SUCESSO!
-    value: numpy.arange(0, 4, 0.5)
+    value: numpy.arange(0, 8, 1)
   states:
     bus_sink: false
     bus_source: false
@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ESSE FOI O SEGREDO DO SUCESSO!
-    value: '1'
+    value: '2'
   states:
     bus_sink: false
     bus_source: false
@@ -69,23 +69,40 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
-- name: analog_random_uniform_source_x_0
-  id: analog_random_uniform_source_x
+- name: blocks_null_sink_0
+  id: blocks_null_sink
   parameters:
     affinity: ''
     alias: ''
+    bus_structure_sink: '[[0,],]'
     comment: ''
-    maximum: '2'
-    maxoutbuf: '0'
-    minimum: '0'
-    minoutbuf: '0'
-    seed: '0'
+    num_inputs: '1'
     type: byte
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [328, 52.0]
+    coordinate: [760, 72.0]
+    rotation: 0
+    state: true
+- name: blocks_null_source_0
+  id: blocks_null_source
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_source: '[[0,],]'
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_outputs: '1'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [400, 72.0]
     rotation: 0
     state: true
 - name: blocks_throttle2_0
@@ -109,6 +126,21 @@ blocks:
     coordinate: [568, 60.0]
     rotation: 0
     state: true
+- name: bpsk_ber_generator_0
+  id: bpsk_ber_generator
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [424, 672.0]
+    rotation: 0
+    state: true
 - name: qtgui_bercurve_sink_0
   id: qtgui_bercurve_sink
   parameters:
@@ -125,7 +157,7 @@ blocks:
     alpha8: '1.0'
     alpha9: '1.0'
     berlimit: '-7.0'
-    berminerrors: '50'
+    berminerrors: '25'
     bus_structure_sink: list(map(lambda b:list(map(lambda a:b * len(esno) * 2 + a,
       range(len(esno)*2))), range(num_curves)))
     color1: '"blue"'
@@ -139,12 +171,12 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    curvenames: '[]'
+    curvenames: '[''RS(255,223)'', ''BPSK AWGN'']'
     esno: esno
     gui_hint: ''
-    label1: ''
+    label1: RS(255,223)
     label10: ''
-    label2: ''
+    label2: BPSK AWGN
     label3: ''
     label4: ''
     label5: ''
@@ -162,7 +194,7 @@ blocks:
     marker7: '0'
     marker8: '0'
     marker9: '0'
-    num_curves: '1'
+    num_curves: num_curves
     style1: '1'
     style10: '1'
     style2: '1'
@@ -208,23 +240,26 @@ blocks:
     coordinate: [432, 160.0]
     rotation: 0
     state: true
-- name: virtual_sink_0
-  id: virtual_sink
-  parameters:
-    alias: ''
-    comment: ''
-    stream_id: randSource
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [752, 68.0]
-    rotation: 0
-    state: true
 
 connections:
-- [analog_random_uniform_source_x_0, '0', blocks_throttle2_0, '0']
-- [blocks_throttle2_0, '0', virtual_sink_0, '0']
+- [blocks_null_source_0, '0', blocks_throttle2_0, '0']
+- [blocks_throttle2_0, '0', blocks_null_sink_0, '0']
+- [bpsk_ber_generator_0, '0', qtgui_bercurve_sink_0, '16']
+- [bpsk_ber_generator_0, '1', qtgui_bercurve_sink_0, '17']
+- [bpsk_ber_generator_0, '10', qtgui_bercurve_sink_0, '26']
+- [bpsk_ber_generator_0, '11', qtgui_bercurve_sink_0, '27']
+- [bpsk_ber_generator_0, '12', qtgui_bercurve_sink_0, '28']
+- [bpsk_ber_generator_0, '13', qtgui_bercurve_sink_0, '29']
+- [bpsk_ber_generator_0, '14', qtgui_bercurve_sink_0, '30']
+- [bpsk_ber_generator_0, '15', qtgui_bercurve_sink_0, '31']
+- [bpsk_ber_generator_0, '2', qtgui_bercurve_sink_0, '18']
+- [bpsk_ber_generator_0, '3', qtgui_bercurve_sink_0, '19']
+- [bpsk_ber_generator_0, '4', qtgui_bercurve_sink_0, '20']
+- [bpsk_ber_generator_0, '5', qtgui_bercurve_sink_0, '21']
+- [bpsk_ber_generator_0, '6', qtgui_bercurve_sink_0, '22']
+- [bpsk_ber_generator_0, '7', qtgui_bercurve_sink_0, '23']
+- [bpsk_ber_generator_0, '8', qtgui_bercurve_sink_0, '24']
+- [bpsk_ber_generator_0, '9', qtgui_bercurve_sink_0, '25']
 - [rs_ber_generator2_0, '0', qtgui_bercurve_sink_0, '0']
 - [rs_ber_generator2_0, '1', qtgui_bercurve_sink_0, '1']
 - [rs_ber_generator2_0, '10', qtgui_bercurve_sink_0, '10']
