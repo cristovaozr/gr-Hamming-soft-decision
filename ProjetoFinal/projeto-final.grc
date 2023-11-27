@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ESSE FOI O SEGREDO DO SUCESSO!
-    value: '2'
+    value: '3'
   states:
     bus_sink: false
     bus_source: false
@@ -141,6 +141,21 @@ blocks:
     coordinate: [424, 672.0]
     rotation: 0
     state: true
+- name: cc_ber_generator_0
+  id: cc_ber_generator
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [440, 1184.0]
+    rotation: 0
+    state: true
 - name: qtgui_bercurve_sink_0
   id: qtgui_bercurve_sink
   parameters:
@@ -177,7 +192,7 @@ blocks:
     label1: RS(255,223)
     label10: ''
     label2: BPSK AWGN
-    label3: ''
+    label3: CC R=0.5 K=7
     label4: ''
     label5: ''
     label6: ''
@@ -260,6 +275,22 @@ connections:
 - [bpsk_ber_generator_0, '7', qtgui_bercurve_sink_0, '23']
 - [bpsk_ber_generator_0, '8', qtgui_bercurve_sink_0, '24']
 - [bpsk_ber_generator_0, '9', qtgui_bercurve_sink_0, '25']
+- [cc_ber_generator_0, '0', qtgui_bercurve_sink_0, '32']
+- [cc_ber_generator_0, '1', qtgui_bercurve_sink_0, '33']
+- [cc_ber_generator_0, '10', qtgui_bercurve_sink_0, '42']
+- [cc_ber_generator_0, '11', qtgui_bercurve_sink_0, '43']
+- [cc_ber_generator_0, '12', qtgui_bercurve_sink_0, '44']
+- [cc_ber_generator_0, '13', qtgui_bercurve_sink_0, '45']
+- [cc_ber_generator_0, '14', qtgui_bercurve_sink_0, '46']
+- [cc_ber_generator_0, '15', qtgui_bercurve_sink_0, '47']
+- [cc_ber_generator_0, '2', qtgui_bercurve_sink_0, '34']
+- [cc_ber_generator_0, '3', qtgui_bercurve_sink_0, '35']
+- [cc_ber_generator_0, '4', qtgui_bercurve_sink_0, '36']
+- [cc_ber_generator_0, '5', qtgui_bercurve_sink_0, '37']
+- [cc_ber_generator_0, '6', qtgui_bercurve_sink_0, '38']
+- [cc_ber_generator_0, '7', qtgui_bercurve_sink_0, '39']
+- [cc_ber_generator_0, '8', qtgui_bercurve_sink_0, '40']
+- [cc_ber_generator_0, '9', qtgui_bercurve_sink_0, '41']
 - [rs_ber_generator2_0, '0', qtgui_bercurve_sink_0, '0']
 - [rs_ber_generator2_0, '1', qtgui_bercurve_sink_0, '1']
 - [rs_ber_generator2_0, '10', qtgui_bercurve_sink_0, '10']

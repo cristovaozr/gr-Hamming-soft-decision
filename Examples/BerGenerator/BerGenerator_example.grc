@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ESSE FOI O SEGREDO DO SUCESSO!
-    value: numpy.arange(00, 10.0, .5)
+    value: numpy.arange(00, 8, 0.5)
   states:
     bus_sink: false
     bus_source: false
@@ -49,7 +49,7 @@ blocks:
   id: variable
   parameters:
     comment: ESSE FOI O SEGREDO DO SUCESSO!
-    value: '1'
+    value: '2'
   states:
     bus_sink: false
     bus_source: false
@@ -69,6 +69,46 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
+- name: variable_cc_decoder_def_0
+  id: variable_cc_decoder_def
+  parameters:
+    comment: ''
+    dim1: '1'
+    dim2: '1'
+    framebits: '128'
+    k: '7'
+    mode: fec.CC_STREAMING
+    ndim: '1'
+    padding: 'False'
+    polys: '[79,109]'
+    rate: '2'
+    state_end: '-1'
+    state_start: '0'
+    value: '"ok"'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [344, 492.0]
+    rotation: 0
+    state: true
+- name: variable_ccsds_encoder_def_0
+  id: variable_ccsds_encoder_def
+  parameters:
+    comment: ''
+    dim1: '1'
+    dim2: '1'
+    framebits: '128'
+    mode: fec.CC_STREAMING
+    ndim: '1'
+    state_start: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [344, 348.0]
+    rotation: 0
+    state: true
 - name: variable_dummy_decoder_def_0
   id: variable_dummy_decoder_def
   parameters:
@@ -114,7 +154,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 456.0]
+    coordinate: [1408, 104.0]
     rotation: 0
     state: true
 - name: blocks_null_source_0
@@ -133,7 +173,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 456.0]
+    coordinate: [1056, 104.0]
     rotation: 0
     state: true
 - name: blocks_throttle2_0
@@ -154,7 +194,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 444.0]
+    coordinate: [1224, 92.0]
     rotation: 0
     state: true
 - name: fec_bercurve_generator_0
@@ -179,6 +219,28 @@ blocks:
     coordinate: [352, 68.0]
     rotation: 0
     state: true
+- name: fec_bercurve_generator_0_0
+  id: fec_bercurve_generator
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    decoder_list: '[variable_cc_decoder_def_0]*len(esno)'
+    encoder_list: '[variable_ccsds_encoder_def_0]*len(esno)'
+    esno: esno
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    puncpat: '''11'''
+    samp_rate: '3200000'
+    seed: '0'
+    threadtype: '"capillary"'
+  states:
+    bus_sink: false
+    bus_source: true
+    bus_structure: null
+    coordinate: [352, 188.0]
+    rotation: 0
+    state: true
 - name: qtgui_bercurve_sink_0
   id: qtgui_bercurve_sink
   parameters:
@@ -194,8 +256,8 @@ blocks:
     alpha7: '1.0'
     alpha8: '1.0'
     alpha9: '1.0'
-    berlimit: '-6.0'
-    berminerrors: '100'
+    berlimit: '-7.0'
+    berminerrors: '50'
     bus_structure_sink: list(map(lambda b:list(map(lambda a:b * len(esno) * 2 + a,
       range(len(esno)*2))), range(num_curves)))
     color1: '"blue"'
@@ -209,12 +271,12 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    curvenames: '["dummy curve"]'
+    curvenames: '[]'
     esno: esno
     gui_hint: ''
     label1: Dummy Encoder
     label10: ''
-    label2: ''
+    label2: CCSDS
     label3: ''
     label4: ''
     label5: ''
@@ -244,9 +306,9 @@ blocks:
     style8: '1'
     style9: '1'
     update_time: '0.10'
-    width1: '1'
+    width1: '2'
     width10: '1'
-    width2: '1'
+    width2: '2'
     width3: '1'
     width4: '1'
     width5: '1'
@@ -267,8 +329,9 @@ blocks:
 connections:
 - [blocks_null_source_0, '0', blocks_throttle2_0, '0']
 - [blocks_throttle2_0, '0', blocks_null_sink_0, '0']
-- [fec_bercurve_generator_0, '40', qtgui_bercurve_sink_0, '40']
+- [fec_bercurve_generator_0, '32', qtgui_bercurve_sink_0, '64']
+- [fec_bercurve_generator_0_0, '32', qtgui_bercurve_sink_0, '65']
 
 metadata:
   file_format: 1
-  grc_version: 3.10.7.0
+  grc_version: 3.10.8.0

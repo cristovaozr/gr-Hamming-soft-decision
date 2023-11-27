@@ -37,7 +37,7 @@ blocks:
   id: variable
   parameters:
     comment: ''
-    value: '32000'
+    value: '100'
   states:
     bus_sink: false
     bus_source: false
@@ -79,7 +79,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [720, 388.0]
+    coordinate: [960, 388.0]
     rotation: 0
     state: true
 - name: blocks_char_to_float_0
@@ -96,7 +96,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [552, 452.0]
+    coordinate: [792, 452.0]
     rotation: 0
     state: true
 - name: blocks_char_to_float_0_0
@@ -113,7 +113,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [952, 524.0]
+    coordinate: [1192, 524.0]
     rotation: 0
     state: enabled
 - name: blocks_char_to_float_0_1
@@ -130,7 +130,27 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 348.0]
+    coordinate: [552, 276.0]
+    rotation: 0
+    state: true
+- name: blocks_delay_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '4'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [368, 276.0]
     rotation: 0
     state: true
 - name: blocks_null_sink_0
@@ -202,7 +222,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [752, 528.0]
+    coordinate: [992, 528.0]
     rotation: 0
     state: enabled
 - name: fec_encode_ccsds_27_bb_0
@@ -217,7 +237,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [360, 528.0]
+    coordinate: [600, 528.0]
     rotation: 0
     state: true
 - name: qtgui_time_sink_x_0
@@ -275,7 +295,7 @@ blocks:
     marker9: '-1'
     name: '""'
     nconnections: '2'
-    size: '1024'
+    size: '128'
     srate: samp_rate
     stemplot: 'False'
     style1: '1'
@@ -314,17 +334,18 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [848, 136.0]
+    coordinate: [1120, 156.0]
     rotation: 0
     state: true
 
 connections:
-- [analog_random_uniform_source_x_0, '0', blocks_char_to_float_0_1, '0']
+- [analog_random_uniform_source_x_0, '0', blocks_delay_0, '0']
 - [analog_random_uniform_source_x_0, '0', fec_encode_ccsds_27_bb_0, '0']
 - [blocks_add_const_vxx_0, '0', fec_decode_ccsds_27_fb_0, '0']
 - [blocks_char_to_float_0, '0', blocks_add_const_vxx_0, '0']
 - [blocks_char_to_float_0_0, '0', qtgui_time_sink_x_0, '1']
 - [blocks_char_to_float_0_1, '0', qtgui_time_sink_x_0, '0']
+- [blocks_delay_0, '0', blocks_char_to_float_0_1, '0']
 - [blocks_null_source_0, '0', blocks_throttle2_0, '0']
 - [blocks_throttle2_0, '0', blocks_null_sink_0, '0']
 - [fec_decode_ccsds_27_fb_0, '0', blocks_char_to_float_0_0, '0']

@@ -16,6 +16,7 @@ import sys
 sys.path.append(os.environ.get('GRC_HIER_PATH', os.path.expanduser('~/.grc_gnuradio')))
 
 from bpsk_ber_generator import bpsk_ber_generator  # grc-generated hier_block
+from cc_ber_generator import cc_ber_generator  # grc-generated hier_block
 from gnuradio import blocks
 from gnuradio import gr
 from gnuradio.filter import firdes
@@ -67,7 +68,7 @@ class projeto_final(gr.top_block, Qt.QWidget):
         # Variables
         ##################################################
         self.samp_rate = samp_rate = 3200000
-        self.num_curves = num_curves = 2
+        self.num_curves = num_curves = 3
         self.esno = esno = numpy.arange(0, 8, 1)
 
         ##################################################
@@ -87,7 +88,7 @@ class projeto_final(gr.top_block, Qt.QWidget):
         self.qtgui_bercurve_sink_0.set_y_axis((-10), 0)
         self.qtgui_bercurve_sink_0.set_x_axis(esno[0], esno[-1])
 
-        labels = ['RS(255,223)', 'BPSK AWGN', '', '', '',
+        labels = ['RS(255,223)', 'BPSK AWGN', 'CC R=0.5 K=7', '', '',
             '', '', '', '', '']
         widths = [1, 1, 1, 1, 1,
             1, 1, 1, 1, 1]
@@ -113,6 +114,7 @@ class projeto_final(gr.top_block, Qt.QWidget):
 
         self._qtgui_bercurve_sink_0_win = sip.wrapinstance(self.qtgui_bercurve_sink_0.qwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_bercurve_sink_0_win)
+        self.cc_ber_generator_0 = cc_ber_generator()
         self.bpsk_ber_generator_0 = bpsk_ber_generator()
         self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_char*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_char*1)
@@ -124,37 +126,53 @@ class projeto_final(gr.top_block, Qt.QWidget):
         ##################################################
         self.connect((self.blocks_null_source_0, 0), (self.blocks_throttle2_0, 0))
         self.connect((self.blocks_throttle2_0, 0), (self.blocks_null_sink_0, 0))
-        self.connect((self.bpsk_ber_generator_0, 5), (self.qtgui_bercurve_sink_0, 21))
-        self.connect((self.bpsk_ber_generator_0, 13), (self.qtgui_bercurve_sink_0, 29))
-        self.connect((self.bpsk_ber_generator_0, 4), (self.qtgui_bercurve_sink_0, 20))
         self.connect((self.bpsk_ber_generator_0, 2), (self.qtgui_bercurve_sink_0, 18))
-        self.connect((self.bpsk_ber_generator_0, 14), (self.qtgui_bercurve_sink_0, 30))
-        self.connect((self.bpsk_ber_generator_0, 12), (self.qtgui_bercurve_sink_0, 28))
-        self.connect((self.bpsk_ber_generator_0, 11), (self.qtgui_bercurve_sink_0, 27))
         self.connect((self.bpsk_ber_generator_0, 10), (self.qtgui_bercurve_sink_0, 26))
-        self.connect((self.bpsk_ber_generator_0, 6), (self.qtgui_bercurve_sink_0, 22))
-        self.connect((self.bpsk_ber_generator_0, 9), (self.qtgui_bercurve_sink_0, 25))
-        self.connect((self.bpsk_ber_generator_0, 0), (self.qtgui_bercurve_sink_0, 16))
+        self.connect((self.bpsk_ber_generator_0, 12), (self.qtgui_bercurve_sink_0, 28))
         self.connect((self.bpsk_ber_generator_0, 8), (self.qtgui_bercurve_sink_0, 24))
-        self.connect((self.bpsk_ber_generator_0, 15), (self.qtgui_bercurve_sink_0, 31))
+        self.connect((self.bpsk_ber_generator_0, 14), (self.qtgui_bercurve_sink_0, 30))
+        self.connect((self.bpsk_ber_generator_0, 13), (self.qtgui_bercurve_sink_0, 29))
+        self.connect((self.bpsk_ber_generator_0, 7), (self.qtgui_bercurve_sink_0, 23))
+        self.connect((self.bpsk_ber_generator_0, 11), (self.qtgui_bercurve_sink_0, 27))
+        self.connect((self.bpsk_ber_generator_0, 9), (self.qtgui_bercurve_sink_0, 25))
         self.connect((self.bpsk_ber_generator_0, 3), (self.qtgui_bercurve_sink_0, 19))
         self.connect((self.bpsk_ber_generator_0, 1), (self.qtgui_bercurve_sink_0, 17))
-        self.connect((self.bpsk_ber_generator_0, 7), (self.qtgui_bercurve_sink_0, 23))
-        self.connect((self.rs_ber_generator2_0, 12), (self.qtgui_bercurve_sink_0, 12))
-        self.connect((self.rs_ber_generator2_0, 5), (self.qtgui_bercurve_sink_0, 5))
-        self.connect((self.rs_ber_generator2_0, 3), (self.qtgui_bercurve_sink_0, 3))
-        self.connect((self.rs_ber_generator2_0, 13), (self.qtgui_bercurve_sink_0, 13))
-        self.connect((self.rs_ber_generator2_0, 7), (self.qtgui_bercurve_sink_0, 7))
-        self.connect((self.rs_ber_generator2_0, 2), (self.qtgui_bercurve_sink_0, 2))
-        self.connect((self.rs_ber_generator2_0, 4), (self.qtgui_bercurve_sink_0, 4))
-        self.connect((self.rs_ber_generator2_0, 15), (self.qtgui_bercurve_sink_0, 15))
-        self.connect((self.rs_ber_generator2_0, 9), (self.qtgui_bercurve_sink_0, 9))
+        self.connect((self.bpsk_ber_generator_0, 4), (self.qtgui_bercurve_sink_0, 20))
+        self.connect((self.bpsk_ber_generator_0, 0), (self.qtgui_bercurve_sink_0, 16))
+        self.connect((self.bpsk_ber_generator_0, 15), (self.qtgui_bercurve_sink_0, 31))
+        self.connect((self.bpsk_ber_generator_0, 5), (self.qtgui_bercurve_sink_0, 21))
+        self.connect((self.bpsk_ber_generator_0, 6), (self.qtgui_bercurve_sink_0, 22))
+        self.connect((self.cc_ber_generator_0, 14), (self.qtgui_bercurve_sink_0, 46))
+        self.connect((self.cc_ber_generator_0, 4), (self.qtgui_bercurve_sink_0, 36))
+        self.connect((self.cc_ber_generator_0, 15), (self.qtgui_bercurve_sink_0, 47))
+        self.connect((self.cc_ber_generator_0, 13), (self.qtgui_bercurve_sink_0, 45))
+        self.connect((self.cc_ber_generator_0, 10), (self.qtgui_bercurve_sink_0, 42))
+        self.connect((self.cc_ber_generator_0, 9), (self.qtgui_bercurve_sink_0, 41))
+        self.connect((self.cc_ber_generator_0, 7), (self.qtgui_bercurve_sink_0, 39))
+        self.connect((self.cc_ber_generator_0, 2), (self.qtgui_bercurve_sink_0, 34))
+        self.connect((self.cc_ber_generator_0, 8), (self.qtgui_bercurve_sink_0, 40))
+        self.connect((self.cc_ber_generator_0, 6), (self.qtgui_bercurve_sink_0, 38))
+        self.connect((self.cc_ber_generator_0, 12), (self.qtgui_bercurve_sink_0, 44))
+        self.connect((self.cc_ber_generator_0, 11), (self.qtgui_bercurve_sink_0, 43))
+        self.connect((self.cc_ber_generator_0, 3), (self.qtgui_bercurve_sink_0, 35))
+        self.connect((self.cc_ber_generator_0, 1), (self.qtgui_bercurve_sink_0, 33))
+        self.connect((self.cc_ber_generator_0, 0), (self.qtgui_bercurve_sink_0, 32))
+        self.connect((self.cc_ber_generator_0, 5), (self.qtgui_bercurve_sink_0, 37))
         self.connect((self.rs_ber_generator2_0, 6), (self.qtgui_bercurve_sink_0, 6))
-        self.connect((self.rs_ber_generator2_0, 8), (self.qtgui_bercurve_sink_0, 8))
-        self.connect((self.rs_ber_generator2_0, 10), (self.qtgui_bercurve_sink_0, 10))
-        self.connect((self.rs_ber_generator2_0, 11), (self.qtgui_bercurve_sink_0, 11))
-        self.connect((self.rs_ber_generator2_0, 1), (self.qtgui_bercurve_sink_0, 1))
+        self.connect((self.rs_ber_generator2_0, 13), (self.qtgui_bercurve_sink_0, 13))
+        self.connect((self.rs_ber_generator2_0, 5), (self.qtgui_bercurve_sink_0, 5))
         self.connect((self.rs_ber_generator2_0, 0), (self.qtgui_bercurve_sink_0, 0))
+        self.connect((self.rs_ber_generator2_0, 4), (self.qtgui_bercurve_sink_0, 4))
+        self.connect((self.rs_ber_generator2_0, 11), (self.qtgui_bercurve_sink_0, 11))
+        self.connect((self.rs_ber_generator2_0, 2), (self.qtgui_bercurve_sink_0, 2))
+        self.connect((self.rs_ber_generator2_0, 1), (self.qtgui_bercurve_sink_0, 1))
+        self.connect((self.rs_ber_generator2_0, 15), (self.qtgui_bercurve_sink_0, 15))
+        self.connect((self.rs_ber_generator2_0, 10), (self.qtgui_bercurve_sink_0, 10))
+        self.connect((self.rs_ber_generator2_0, 7), (self.qtgui_bercurve_sink_0, 7))
+        self.connect((self.rs_ber_generator2_0, 9), (self.qtgui_bercurve_sink_0, 9))
+        self.connect((self.rs_ber_generator2_0, 12), (self.qtgui_bercurve_sink_0, 12))
+        self.connect((self.rs_ber_generator2_0, 8), (self.qtgui_bercurve_sink_0, 8))
+        self.connect((self.rs_ber_generator2_0, 3), (self.qtgui_bercurve_sink_0, 3))
         self.connect((self.rs_ber_generator2_0, 14), (self.qtgui_bercurve_sink_0, 14))
 
 

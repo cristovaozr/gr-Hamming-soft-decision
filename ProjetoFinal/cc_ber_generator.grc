@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: hb
     hier_block_src_path: '.:'
-    id: rs_ber_generator2
+    id: cc_ber_generator
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: RS BER Generator2
+    title: CC BER Generator
     window_size: (1000,1000)
   states:
     bus_sink: false
@@ -49,7 +49,155 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [56, 292.0]
+    coordinate: [32, 292.0]
+    rotation: 0
+    state: true
+- name: blocks_delay_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '4'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [224, 196.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_0
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(0/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 132.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_1
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(1/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 228.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_2
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(2/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 324.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_3
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(3/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 420.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_4
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(4/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 516.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_5
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(5/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 612.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_6
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(6/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 708.0]
+    rotation: 0
+    state: true
+- name: cc_ber_one_stage_7
+  id: cc_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(7/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 804.0]
     rotation: 0
     state: true
 - name: pad_sink_00
@@ -67,7 +215,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 76.0]
+    coordinate: [1000, 84.0]
     rotation: 0
     state: true
 - name: pad_sink_01
@@ -85,7 +233,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 124.0]
+    coordinate: [1000, 132.0]
     rotation: 0
     state: true
 - name: pad_sink_02
@@ -103,7 +251,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 172.0]
+    coordinate: [1000, 180.0]
     rotation: 0
     state: true
 - name: pad_sink_03
@@ -121,7 +269,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 220.0]
+    coordinate: [1000, 228.0]
     rotation: 0
     state: true
 - name: pad_sink_04
@@ -139,7 +287,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 268.0]
+    coordinate: [1000, 276.0]
     rotation: 0
     state: true
 - name: pad_sink_05
@@ -157,7 +305,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 316.0]
+    coordinate: [1000, 324.0]
     rotation: 0
     state: true
 - name: pad_sink_06
@@ -175,7 +323,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 364.0]
+    coordinate: [1000, 372.0]
     rotation: 0
     state: true
 - name: pad_sink_07
@@ -193,7 +341,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 412.0]
+    coordinate: [1000, 420.0]
     rotation: 0
     state: true
 - name: pad_sink_08
@@ -211,7 +359,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 460.0]
+    coordinate: [1000, 468.0]
     rotation: 0
     state: true
 - name: pad_sink_09
@@ -229,7 +377,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 508.0]
+    coordinate: [1000, 516.0]
     rotation: 0
     state: true
 - name: pad_sink_10
@@ -247,7 +395,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 556.0]
+    coordinate: [1000, 564.0]
     rotation: 0
     state: true
 - name: pad_sink_11
@@ -265,7 +413,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 604.0]
+    coordinate: [1000, 612.0]
     rotation: 0
     state: true
 - name: pad_sink_12
@@ -283,7 +431,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 652.0]
+    coordinate: [1000, 660.0]
     rotation: 0
     state: true
 - name: pad_sink_13
@@ -301,7 +449,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 700.0]
+    coordinate: [1000, 708.0]
     rotation: 0
     state: true
 - name: pad_sink_14
@@ -319,7 +467,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 748.0]
+    coordinate: [1000, 756.0]
     rotation: 0
     state: true
 - name: pad_sink_15
@@ -337,135 +485,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1000, 796.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(0/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 124.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_0
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(1/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 220.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_0_0
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(3/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 412.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_0_0_0
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(7/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 796.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_0_1
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(5/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 604.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_1
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(2/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 316.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_1_0
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(6/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 700.0]
-    rotation: 0
-    state: true
-- name: rs_ber_one_stage_0_2
-  id: rs_ber_one_stage
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    noise_voltage: 10**-(4/10)
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [736, 508.0]
+    coordinate: [1000, 804.0]
     rotation: 0
     state: true
 - name: virtual_sink_0
@@ -478,7 +498,20 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [288, 308.0]
+    coordinate: [280, 404.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [320, 140.0]
     rotation: 0
     state: true
 - name: virtual_source_0
@@ -486,12 +519,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 172.0]
+    coordinate: [800, 180.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0
@@ -499,12 +532,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 268.0]
+    coordinate: [800, 276.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0_0
@@ -512,12 +545,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 748.0]
+    coordinate: [800, 756.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0_1
@@ -525,12 +558,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 556.0]
+    coordinate: [800, 564.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0_2
@@ -543,7 +576,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 220.0]
+    coordinate: [480, 228.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0_2_0
@@ -556,7 +589,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 508.0]
+    coordinate: [480, 516.0]
     rotation: 0
     state: true
 - name: virtual_source_0_0_2_1
@@ -569,7 +602,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 796.0]
+    coordinate: [480, 804.0]
     rotation: 0
     state: true
 - name: virtual_source_0_1
@@ -577,12 +610,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 364.0]
+    coordinate: [800, 372.0]
     rotation: 0
     state: true
 - name: virtual_source_0_1_0
@@ -590,12 +623,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 76.0]
+    coordinate: [800, 84.0]
     rotation: 0
     state: true
 - name: virtual_source_0_1_1
@@ -608,7 +641,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 316.0]
+    coordinate: [480, 324.0]
     rotation: 0
     state: true
 - name: virtual_source_0_1_1_0
@@ -621,7 +654,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 604.0]
+    coordinate: [480, 612.0]
     rotation: 0
     state: true
 - name: virtual_source_0_2
@@ -629,12 +662,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 460.0]
+    coordinate: [800, 468.0]
     rotation: 0
     state: true
 - name: virtual_source_0_3
@@ -642,12 +675,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: randSource
+    stream_id: randSource2
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [800, 652.0]
+    coordinate: [800, 660.0]
     rotation: 0
     state: true
 - name: virtual_source_0_4
@@ -660,7 +693,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 124.0]
+    coordinate: [480, 132.0]
     rotation: 0
     state: true
 - name: virtual_source_0_4_0
@@ -673,7 +706,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 412.0]
+    coordinate: [480, 420.0]
     rotation: 0
     state: true
 - name: virtual_source_0_4_1
@@ -686,36 +719,38 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [480, 700.0]
+    coordinate: [480, 708.0]
     rotation: 0
     state: true
 
 connections:
+- [analog_random_uniform_source_x_0, '0', blocks_delay_0, '0']
 - [analog_random_uniform_source_x_0, '0', virtual_sink_0, '0']
-- [rs_ber_one_stage_0, '0', pad_sink_01, '0']
-- [rs_ber_one_stage_0_0, '0', pad_sink_03, '0']
-- [rs_ber_one_stage_0_0_0, '0', pad_sink_07, '0']
-- [rs_ber_one_stage_0_0_0_0, '0', pad_sink_15, '0']
-- [rs_ber_one_stage_0_0_1, '0', pad_sink_11, '0']
-- [rs_ber_one_stage_0_1, '0', pad_sink_05, '0']
-- [rs_ber_one_stage_0_1_0, '0', pad_sink_13, '0']
-- [rs_ber_one_stage_0_2, '0', pad_sink_09, '0']
+- [blocks_delay_0, '0', virtual_sink_0_0, '0']
+- [cc_ber_one_stage_0, '0', pad_sink_01, '0']
+- [cc_ber_one_stage_1, '0', pad_sink_03, '0']
+- [cc_ber_one_stage_2, '0', pad_sink_05, '0']
+- [cc_ber_one_stage_3, '0', pad_sink_07, '0']
+- [cc_ber_one_stage_4, '0', pad_sink_09, '0']
+- [cc_ber_one_stage_5, '0', pad_sink_11, '0']
+- [cc_ber_one_stage_6, '0', pad_sink_13, '0']
+- [cc_ber_one_stage_7, '0', pad_sink_15, '0']
 - [virtual_source_0, '0', pad_sink_02, '0']
 - [virtual_source_0_0, '0', pad_sink_04, '0']
 - [virtual_source_0_0_0, '0', pad_sink_14, '0']
 - [virtual_source_0_0_1, '0', pad_sink_10, '0']
-- [virtual_source_0_0_2, '0', rs_ber_one_stage_0_0, '0']
-- [virtual_source_0_0_2_0, '0', rs_ber_one_stage_0_2, '0']
-- [virtual_source_0_0_2_1, '0', rs_ber_one_stage_0_0_0_0, '0']
+- [virtual_source_0_0_2, '0', cc_ber_one_stage_1, '0']
+- [virtual_source_0_0_2_0, '0', cc_ber_one_stage_4, '0']
+- [virtual_source_0_0_2_1, '0', cc_ber_one_stage_7, '0']
 - [virtual_source_0_1, '0', pad_sink_06, '0']
 - [virtual_source_0_1_0, '0', pad_sink_00, '0']
-- [virtual_source_0_1_1, '0', rs_ber_one_stage_0_1, '0']
-- [virtual_source_0_1_1_0, '0', rs_ber_one_stage_0_0_1, '0']
+- [virtual_source_0_1_1, '0', cc_ber_one_stage_2, '0']
+- [virtual_source_0_1_1_0, '0', cc_ber_one_stage_5, '0']
 - [virtual_source_0_2, '0', pad_sink_08, '0']
 - [virtual_source_0_3, '0', pad_sink_12, '0']
-- [virtual_source_0_4, '0', rs_ber_one_stage_0, '0']
-- [virtual_source_0_4_0, '0', rs_ber_one_stage_0_0_0, '0']
-- [virtual_source_0_4_1, '0', rs_ber_one_stage_0_1_0, '0']
+- [virtual_source_0_4, '0', cc_ber_one_stage_0, '0']
+- [virtual_source_0_4_0, '0', cc_ber_one_stage_3, '0']
+- [virtual_source_0_4_1, '0', cc_ber_one_stage_6, '0']
 
 metadata:
   file_format: 1

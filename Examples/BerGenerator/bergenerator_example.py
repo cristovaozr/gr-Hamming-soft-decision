@@ -7,9 +7,8 @@
 # GNU Radio Python Flow Graph
 # Title: BER Generator Example
 # Author: cristovaozr
-# GNU Radio version: 3.10.7.0
+# GNU Radio version: 3.10.8.0
 
-from packaging.version import Version as StrictVersion
 from PyQt5 import Qt
 from gnuradio import qtgui
 from gnuradio import blocks
@@ -54,10 +53,9 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
         self.settings = Qt.QSettings("GNU Radio", "bergenerator_example")
 
         try:
-            if StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
-                self.restoreGeometry(self.settings.value("geometry").toByteArray())
-            else:
-                self.restoreGeometry(self.settings.value("geometry"))
+            geometry = self.settings.value("geometry")
+            if geometry:
+                self.restoreGeometry(geometry)
         except BaseException as exc:
             print(f"Qt GUI: Could not restore geometry: {str(exc)}", file=sys.stderr)
 
@@ -66,9 +64,11 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
         ##################################################
         self.variable_dummy_encoder_def_0 = variable_dummy_encoder_def_0 = list(map((lambda a:fec.dummy_encoder_make(2048)),range(0,1)))
         self.variable_dummy_decoder_def_0 = variable_dummy_decoder_def_0 = list(map((lambda a: fec.dummy_decoder.make(2048)),range(0,1)))
+        self.variable_ccsds_encoder_def_0 = variable_ccsds_encoder_def_0 = list(map((lambda a: fec.ccsds_encoder_make(128, 0, fec.CC_STREAMING)),range(0,1) ))
+        self.variable_cc_decoder_def_0 = variable_cc_decoder_def_0 = list(map( (lambda a: fec.cc_decoder.make(128,7, 2, [79,109], 0, (-1), fec.CC_STREAMING, False)),range(0,1)))
         self.samp_rate = samp_rate = 3200000
-        self.num_curves = num_curves = 1
-        self.esno = esno = numpy.arange(00, 10.0, .5)
+        self.num_curves = num_curves = 2
+        self.esno = esno = numpy.arange(00, 8, 0.5)
 
         ##################################################
         # Blocks
@@ -77,18 +77,18 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
         self.qtgui_bercurve_sink_0 = qtgui.ber_sink_b(
             esno, #range of esnos
             num_curves, #number of curves
-            100, #ensure at least
-            (-6.0), #cutoff
-            ["dummy curve"], #indiv. curve names
+            50, #ensure at least
+            (-7.0), #cutoff
+            [], #indiv. curve names
             None # parent
         )
         self.qtgui_bercurve_sink_0.set_update_time(0.10)
         self.qtgui_bercurve_sink_0.set_y_axis((-10), 0)
         self.qtgui_bercurve_sink_0.set_x_axis(esno[0], esno[-1])
 
-        labels = ['Dummy Encoder', '', '', '', '',
+        labels = ['Dummy Encoder', 'CCSDS', '', '', '',
             '', '', '', '', '']
-        widths = [1, 1, 1, 1, 1,
+        widths = [2, 2, 1, 1, 1,
             1, 1, 1, 1, 1]
         colors = ["blue", "red", "green", "black", "cyan",
             "magenta", "yellow", "dark red", "dark green", "blue"]
@@ -112,6 +112,14 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
 
         self._qtgui_bercurve_sink_0_win = sip.wrapinstance(self.qtgui_bercurve_sink_0.qwidget(), Qt.QWidget)
         self.top_layout.addWidget(self._qtgui_bercurve_sink_0_win)
+        self.fec_bercurve_generator_0_0 = fec.bercurve_generator(
+            [variable_ccsds_encoder_def_0]*len(esno), #size
+            [variable_cc_decoder_def_0]*len(esno), #name
+            esno, #range of esnos
+            3200000, #throttle
+            "capillary", #threading mode
+            '11', #puncture pattern
+            0) # noise gen. seed
         self.fec_bercurve_generator_0 = fec.bercurve_generator(
             [variable_dummy_encoder_def_0]*len(esno), #size
             [variable_dummy_decoder_def_0]*len(esno), #name
@@ -162,14 +170,38 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
         self.connect((self.fec_bercurve_generator_0, 29), (self.qtgui_bercurve_sink_0, 29))
         self.connect((self.fec_bercurve_generator_0, 30), (self.qtgui_bercurve_sink_0, 30))
         self.connect((self.fec_bercurve_generator_0, 31), (self.qtgui_bercurve_sink_0, 31))
-        self.connect((self.fec_bercurve_generator_0, 32), (self.qtgui_bercurve_sink_0, 32))
-        self.connect((self.fec_bercurve_generator_0, 33), (self.qtgui_bercurve_sink_0, 33))
-        self.connect((self.fec_bercurve_generator_0, 34), (self.qtgui_bercurve_sink_0, 34))
-        self.connect((self.fec_bercurve_generator_0, 35), (self.qtgui_bercurve_sink_0, 35))
-        self.connect((self.fec_bercurve_generator_0, 36), (self.qtgui_bercurve_sink_0, 36))
-        self.connect((self.fec_bercurve_generator_0, 37), (self.qtgui_bercurve_sink_0, 37))
-        self.connect((self.fec_bercurve_generator_0, 38), (self.qtgui_bercurve_sink_0, 38))
-        self.connect((self.fec_bercurve_generator_0, 39), (self.qtgui_bercurve_sink_0, 39))
+        self.connect((self.fec_bercurve_generator_0_0, 0), (self.qtgui_bercurve_sink_0, 32))
+        self.connect((self.fec_bercurve_generator_0_0, 1), (self.qtgui_bercurve_sink_0, 33))
+        self.connect((self.fec_bercurve_generator_0_0, 2), (self.qtgui_bercurve_sink_0, 34))
+        self.connect((self.fec_bercurve_generator_0_0, 3), (self.qtgui_bercurve_sink_0, 35))
+        self.connect((self.fec_bercurve_generator_0_0, 4), (self.qtgui_bercurve_sink_0, 36))
+        self.connect((self.fec_bercurve_generator_0_0, 5), (self.qtgui_bercurve_sink_0, 37))
+        self.connect((self.fec_bercurve_generator_0_0, 6), (self.qtgui_bercurve_sink_0, 38))
+        self.connect((self.fec_bercurve_generator_0_0, 7), (self.qtgui_bercurve_sink_0, 39))
+        self.connect((self.fec_bercurve_generator_0_0, 8), (self.qtgui_bercurve_sink_0, 40))
+        self.connect((self.fec_bercurve_generator_0_0, 9), (self.qtgui_bercurve_sink_0, 41))
+        self.connect((self.fec_bercurve_generator_0_0, 10), (self.qtgui_bercurve_sink_0, 42))
+        self.connect((self.fec_bercurve_generator_0_0, 11), (self.qtgui_bercurve_sink_0, 43))
+        self.connect((self.fec_bercurve_generator_0_0, 12), (self.qtgui_bercurve_sink_0, 44))
+        self.connect((self.fec_bercurve_generator_0_0, 13), (self.qtgui_bercurve_sink_0, 45))
+        self.connect((self.fec_bercurve_generator_0_0, 14), (self.qtgui_bercurve_sink_0, 46))
+        self.connect((self.fec_bercurve_generator_0_0, 15), (self.qtgui_bercurve_sink_0, 47))
+        self.connect((self.fec_bercurve_generator_0_0, 16), (self.qtgui_bercurve_sink_0, 48))
+        self.connect((self.fec_bercurve_generator_0_0, 17), (self.qtgui_bercurve_sink_0, 49))
+        self.connect((self.fec_bercurve_generator_0_0, 18), (self.qtgui_bercurve_sink_0, 50))
+        self.connect((self.fec_bercurve_generator_0_0, 19), (self.qtgui_bercurve_sink_0, 51))
+        self.connect((self.fec_bercurve_generator_0_0, 20), (self.qtgui_bercurve_sink_0, 52))
+        self.connect((self.fec_bercurve_generator_0_0, 21), (self.qtgui_bercurve_sink_0, 53))
+        self.connect((self.fec_bercurve_generator_0_0, 22), (self.qtgui_bercurve_sink_0, 54))
+        self.connect((self.fec_bercurve_generator_0_0, 23), (self.qtgui_bercurve_sink_0, 55))
+        self.connect((self.fec_bercurve_generator_0_0, 24), (self.qtgui_bercurve_sink_0, 56))
+        self.connect((self.fec_bercurve_generator_0_0, 25), (self.qtgui_bercurve_sink_0, 57))
+        self.connect((self.fec_bercurve_generator_0_0, 26), (self.qtgui_bercurve_sink_0, 58))
+        self.connect((self.fec_bercurve_generator_0_0, 27), (self.qtgui_bercurve_sink_0, 59))
+        self.connect((self.fec_bercurve_generator_0_0, 28), (self.qtgui_bercurve_sink_0, 60))
+        self.connect((self.fec_bercurve_generator_0_0, 29), (self.qtgui_bercurve_sink_0, 61))
+        self.connect((self.fec_bercurve_generator_0_0, 30), (self.qtgui_bercurve_sink_0, 62))
+        self.connect((self.fec_bercurve_generator_0_0, 31), (self.qtgui_bercurve_sink_0, 63))
 
 
     def closeEvent(self, event):
@@ -191,6 +223,18 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
 
     def set_variable_dummy_decoder_def_0(self, variable_dummy_decoder_def_0):
         self.variable_dummy_decoder_def_0 = variable_dummy_decoder_def_0
+
+    def get_variable_ccsds_encoder_def_0(self):
+        return self.variable_ccsds_encoder_def_0
+
+    def set_variable_ccsds_encoder_def_0(self, variable_ccsds_encoder_def_0):
+        self.variable_ccsds_encoder_def_0 = variable_ccsds_encoder_def_0
+
+    def get_variable_cc_decoder_def_0(self):
+        return self.variable_cc_decoder_def_0
+
+    def set_variable_cc_decoder_def_0(self, variable_cc_decoder_def_0):
+        self.variable_cc_decoder_def_0 = variable_cc_decoder_def_0
 
     def get_samp_rate(self):
         return self.samp_rate
@@ -216,9 +260,6 @@ class bergenerator_example(gr.top_block, Qt.QWidget):
 
 def main(top_block_cls=bergenerator_example, options=None):
 
-    if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
-        style = gr.prefs().get_string('qtgui', 'style', 'raster')
-        Qt.QApplication.setGraphicsSystem(style)
     qapp = Qt.QApplication(sys.argv)
 
     tb = top_block_cls()

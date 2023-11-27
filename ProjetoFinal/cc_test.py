@@ -62,14 +62,14 @@ class cc_test(gr.top_block, Qt.QWidget):
         ##################################################
         # Variables
         ##################################################
-        self.samp_rate = samp_rate = 32000
+        self.samp_rate = samp_rate = 100
 
         ##################################################
         # Blocks
         ##################################################
 
         self.qtgui_time_sink_x_0 = qtgui.time_sink_f(
-            1024, #size
+            128, #size
             samp_rate, #samp_rate
             "", #name
             2, #number of inputs
@@ -121,6 +121,7 @@ class cc_test(gr.top_block, Qt.QWidget):
         self.blocks_throttle2_0 = blocks.throttle( gr.sizeof_char*1, samp_rate, True, 0 if "auto" == "auto" else max( int(float(0.1) * samp_rate) if "auto" == "time" else int(0.1), 1) )
         self.blocks_null_source_0 = blocks.null_source(gr.sizeof_char*1)
         self.blocks_null_sink_0 = blocks.null_sink(gr.sizeof_char*1)
+        self.blocks_delay_0 = blocks.delay(gr.sizeof_char*1, 4)
         self.blocks_char_to_float_0_1 = blocks.char_to_float(1, 1)
         self.blocks_char_to_float_0_0 = blocks.char_to_float(1, 1)
         self.blocks_char_to_float_0 = blocks.char_to_float(1, .5)
@@ -131,12 +132,13 @@ class cc_test(gr.top_block, Qt.QWidget):
         ##################################################
         # Connections
         ##################################################
-        self.connect((self.analog_random_uniform_source_x_0, 0), (self.blocks_char_to_float_0_1, 0))
+        self.connect((self.analog_random_uniform_source_x_0, 0), (self.blocks_delay_0, 0))
         self.connect((self.analog_random_uniform_source_x_0, 0), (self.fec_encode_ccsds_27_bb_0, 0))
         self.connect((self.blocks_add_const_vxx_0, 0), (self.fec_decode_ccsds_27_fb_0, 0))
         self.connect((self.blocks_char_to_float_0, 0), (self.blocks_add_const_vxx_0, 0))
         self.connect((self.blocks_char_to_float_0_0, 0), (self.qtgui_time_sink_x_0, 1))
         self.connect((self.blocks_char_to_float_0_1, 0), (self.qtgui_time_sink_x_0, 0))
+        self.connect((self.blocks_delay_0, 0), (self.blocks_char_to_float_0_1, 0))
         self.connect((self.blocks_null_source_0, 0), (self.blocks_throttle2_0, 0))
         self.connect((self.blocks_throttle2_0, 0), (self.blocks_null_sink_0, 0))
         self.connect((self.fec_decode_ccsds_27_fb_0, 0), (self.blocks_char_to_float_0_0, 0))
