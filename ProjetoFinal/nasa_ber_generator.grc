@@ -1,0 +1,757 @@
+options:
+  parameters:
+    author: "Crist\xF3v\xE3o Rufino"
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: hb
+    hier_block_src_path: '.:'
+    id: nasa_ber_generator
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: NASA BER Generator
+    window_size: (1000,1000)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: analog_random_uniform_source_x_0
+  id: analog_random_uniform_source_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maximum: '2'
+    maxoutbuf: '0'
+    minimum: '0'
+    minoutbuf: '0'
+    seed: '0'
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [32, 292.0]
+    rotation: 0
+    state: true
+- name: blocks_delay_0
+  id: blocks_delay
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    delay: '4'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    showports: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [224, 196.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(0/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 132.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_0
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(1/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 228.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_1
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(2/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 324.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_2
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(3/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 420.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_3
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(4/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 516.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_4
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(5/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 612.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_5
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(6/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 708.0]
+    rotation: 0
+    state: true
+- name: nasa_ber_one_stage_0_6
+  id: nasa_ber_one_stage
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: 10**-(7/10)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [792, 804.0]
+    rotation: 0
+    state: true
+- name: pad_sink_00
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out0
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 84.0]
+    rotation: 0
+    state: true
+- name: pad_sink_01
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out1
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 132.0]
+    rotation: 0
+    state: true
+- name: pad_sink_02
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out2
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 180.0]
+    rotation: 0
+    state: true
+- name: pad_sink_03
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out3
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 228.0]
+    rotation: 0
+    state: true
+- name: pad_sink_04
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out4
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 276.0]
+    rotation: 0
+    state: true
+- name: pad_sink_05
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out5
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 324.0]
+    rotation: 0
+    state: true
+- name: pad_sink_06
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out6
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 372.0]
+    rotation: 0
+    state: true
+- name: pad_sink_07
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out7
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 420.0]
+    rotation: 0
+    state: true
+- name: pad_sink_08
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out8
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 468.0]
+    rotation: 0
+    state: true
+- name: pad_sink_09
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out9
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 516.0]
+    rotation: 0
+    state: true
+- name: pad_sink_10
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out10
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 564.0]
+    rotation: 0
+    state: true
+- name: pad_sink_11
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out11
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 612.0]
+    rotation: 0
+    state: true
+- name: pad_sink_12
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out12
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 660.0]
+    rotation: 0
+    state: true
+- name: pad_sink_13
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out13
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 708.0]
+    rotation: 0
+    state: true
+- name: pad_sink_14
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out14
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 756.0]
+    rotation: 0
+    state: true
+- name: pad_sink_15
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out15
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1000, 804.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [280, 404.0]
+    rotation: 0
+    state: true
+- name: virtual_sink_0_0
+  id: virtual_sink
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [320, 140.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 180.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 276.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 756.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 564.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_2
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 228.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_2_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 516.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_0_2_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 804.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 372.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 84.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 324.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_1_1_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 612.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_2
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 468.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_3
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource2
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [800, 660.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_4
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 132.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_4_0
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 420.0]
+    rotation: 0
+    state: true
+- name: virtual_source_0_4_1
+  id: virtual_source
+  parameters:
+    alias: ''
+    comment: ''
+    stream_id: randSource
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [480, 708.0]
+    rotation: 0
+    state: true
+
+connections:
+- [analog_random_uniform_source_x_0, '0', blocks_delay_0, '0']
+- [analog_random_uniform_source_x_0, '0', virtual_sink_0, '0']
+- [blocks_delay_0, '0', virtual_sink_0_0, '0']
+- [nasa_ber_one_stage_0, '0', pad_sink_01, '0']
+- [nasa_ber_one_stage_0_0, '0', pad_sink_03, '0']
+- [nasa_ber_one_stage_0_1, '0', pad_sink_05, '0']
+- [nasa_ber_one_stage_0_2, '0', pad_sink_07, '0']
+- [nasa_ber_one_stage_0_3, '0', pad_sink_09, '0']
+- [nasa_ber_one_stage_0_4, '0', pad_sink_11, '0']
+- [nasa_ber_one_stage_0_5, '0', pad_sink_13, '0']
+- [nasa_ber_one_stage_0_6, '0', pad_sink_15, '0']
+- [virtual_source_0, '0', pad_sink_02, '0']
+- [virtual_source_0_0, '0', pad_sink_04, '0']
+- [virtual_source_0_0_0, '0', pad_sink_14, '0']
+- [virtual_source_0_0_1, '0', pad_sink_10, '0']
+- [virtual_source_0_0_2, '0', nasa_ber_one_stage_0_0, '0']
+- [virtual_source_0_0_2_0, '0', nasa_ber_one_stage_0_3, '0']
+- [virtual_source_0_0_2_1, '0', nasa_ber_one_stage_0_6, '0']
+- [virtual_source_0_1, '0', pad_sink_06, '0']
+- [virtual_source_0_1_0, '0', pad_sink_00, '0']
+- [virtual_source_0_1_1, '0', nasa_ber_one_stage_0_1, '0']
+- [virtual_source_0_1_1_0, '0', nasa_ber_one_stage_0_4, '0']
+- [virtual_source_0_2, '0', pad_sink_08, '0']
+- [virtual_source_0_3, '0', pad_sink_12, '0']
+- [virtual_source_0_4, '0', nasa_ber_one_stage_0, '0']
+- [virtual_source_0_4_0, '0', nasa_ber_one_stage_0_2, '0']
+- [virtual_source_0_4_1, '0', nasa_ber_one_stage_0_5, '0']
+
+metadata:
+  file_format: 1
+  grc_version: 3.10.8.0
