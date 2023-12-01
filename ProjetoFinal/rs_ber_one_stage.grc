@@ -44,7 +44,7 @@ blocks:
     minoutbuf: '0'
     noise_type: analog.GR_GAUSSIAN
     seed: '0'
-    type: complex
+    type: float
   states:
     bus_sink: false
     bus_source: false
@@ -52,6 +52,24 @@ blocks:
     coordinate: [696, 564.0]
     rotation: 0
     state: true
+- name: blocks_add_xx_0
+  id: blocks_add_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_inputs: '2'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1032, 480.0]
+    rotation: 0
+    state: disabled
 - name: blocks_stream_to_vector_0
   id: blocks_stream_to_vector
   parameters:
@@ -139,6 +157,22 @@ blocks:
     bus_structure: null
     coordinate: [984, 552.0]
     rotation: 0
+    state: disabled
+- name: custom_channel_1
+  id: custom_channel
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    noise_voltage: noise_voltage
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [984, 528.0]
+    rotation: 0
     state: true
 - name: dtv_dvbt_reed_solomon_dec_0
   id: dtv_dvbt_reed_solomon_dec
@@ -198,7 +232,7 @@ blocks:
       \ default arguments here\n        \"\"\"arguments to this function show up as\
       \ parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n            self,\n\
       \            name='BPSK Modulator',   # will show up in GRC\n            in_sig=[np.byte],\n\
-      \            out_sig=[np.complex64]\n        )\n        # if an attribute with\
+      \            out_sig=[np.float32]\n        )\n        # if an attribute with\
       \ the same name as a parameter is found,\n        # a callback is registered\
       \ (properties work, too).\n\n    def work(self, input_items, output_items):\n\
       \n        for i, item in enumerate(input_items[0]):\n            if item ==\
@@ -210,8 +244,8 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
   states:
-    _io_cache: ('BPSK Modulator', 'blk', [], [('0', 'byte', 1)], [('0', 'complex',
-      1)], 'arguments to this function show up as parameters in GRC', [])
+    _io_cache: ('BPSK Modulator', 'blk', [], [('0', 'byte', 1)], [('0', 'float', 1)],
+      'arguments to this function show up as parameters in GRC', [])
     bus_sink: false
     bus_source: false
     bus_structure: null
@@ -230,7 +264,7 @@ blocks:
       \ example - a simple multiply const\"\"\"\n\n    def __init__(self):  # only\
       \ default arguments here\n        \"\"\"arguments to this function show up as\
       \ parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n            self,\n\
-      \            name='BPSK Demodulator',   # will show up in GRC\n            in_sig=[np.complex64],\n\
+      \            name='BPSK Demodulator',   # will show up in GRC\n            in_sig=[np.float32],\n\
       \            out_sig=[np.byte]\n        )\n\n    def work(self, input_items,\
       \ output_items):\n        for i, item in enumerate(input_items[0]):\n      \
       \      if item.real < 0:\n                output_items[0][i] = 0\n         \
@@ -241,7 +275,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
   states:
-    _io_cache: ('BPSK Demodulator', 'blk', [], [('0', 'complex', 1)], [('0', 'byte',
+    _io_cache: ('BPSK Demodulator', 'blk', [], [('0', 'float', 1)], [('0', 'byte',
       1)], 'Embedded Python Block example - a simple multiply const', [])
     bus_sink: false
     bus_source: false
@@ -263,7 +297,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [352, 28.0]
+    coordinate: [216, 20.0]
     rotation: 0
     state: true
 - name: pad_sink_0
@@ -306,15 +340,19 @@ blocks:
     state: true
 
 connections:
+- [analog_noise_source_x_0, '0', blocks_add_xx_0, '1']
 - [analog_noise_source_x_0, '0', custom_channel_0, '1']
+- [analog_noise_source_x_0, '0', custom_channel_1, '1']
+- [blocks_add_xx_0, '0', epy_block_1, '0']
 - [blocks_stream_to_vector_0, '0', dtv_dvbt_reed_solomon_enc_0, '0']
 - [blocks_stream_to_vector_0_0, '0', dtv_dvbt_reed_solomon_dec_0, '0']
 - [blocks_vector_to_stream_0, '0', epy_block_0, '0']
 - [blocks_vector_to_stream_1, '0', pad_sink_0, '0']
-- [custom_channel_0, '0', epy_block_1, '0']
+- [custom_channel_1, '0', epy_block_1, '0']
 - [dtv_dvbt_reed_solomon_dec_0, '0', blocks_vector_to_stream_1, '0']
 - [dtv_dvbt_reed_solomon_enc_0, '0', blocks_vector_to_stream_0, '0']
-- [epy_block_0, '0', custom_channel_0, '0']
+- [epy_block_0, '0', blocks_add_xx_0, '0']
+- [epy_block_0, '0', custom_channel_1, '0']
 - [epy_block_1, '0', blocks_stream_to_vector_0_0, '0']
 - [pad_source_0, '0', blocks_stream_to_vector_0, '0']
 

@@ -44,63 +44,12 @@ blocks:
     minoutbuf: '0'
     noise_type: analog.GR_GAUSSIAN
     seed: '0'
-    type: complex
+    type: float
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
     coordinate: [184, 396.0]
-    rotation: 0
-    state: true
-- name: blocks_add_const_vxx_0
-  id: blocks_add_const_vxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    const: '-1'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    type: float
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [528, 12.0]
-    rotation: 0
-    state: disabled
-- name: blocks_char_to_float_0
-  id: blocks_char_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale: '.5'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [360, 76.0]
-    rotation: 0
-    state: disabled
-- name: blocks_complex_to_real_0
-  id: blocks_complex_to_real
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [728, 400.0]
     rotation: 0
     state: true
 - name: custom_channel_0
@@ -131,7 +80,7 @@ blocks:
       \ default arguments here\n        \"\"\"arguments to this function show up as\
       \ parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n            self,\n\
       \            name='BPSK Modulator',   # will show up in GRC\n            in_sig=[np.byte],\n\
-      \            out_sig=[np.complex64]\n        )\n        # if an attribute with\
+      \            out_sig=[np.float32]\n        )\n        # if an attribute with\
       \ the same name as a parameter is found,\n        # a callback is registered\
       \ (properties work, too).\n\n    def work(self, input_items, output_items):\n\
       \n        for i, item in enumerate(input_items[0]):\n            if item ==\
@@ -143,8 +92,8 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
   states:
-    _io_cache: ('BPSK Modulator', 'blk', [], [('0', 'byte', 1)], [('0', 'complex',
-      1)], 'arguments to this function show up as parameters in GRC', [])
+    _io_cache: ('BPSK Modulator', 'blk', [], [('0', 'byte', 1)], [('0', 'float', 1)],
+      'arguments to this function show up as parameters in GRC', [])
     bus_sink: false
     bus_source: false
     bus_structure: null
@@ -239,9 +188,7 @@ blocks:
 
 connections:
 - [analog_noise_source_x_0, '0', custom_channel_0, '1']
-- [blocks_char_to_float_0, '0', blocks_add_const_vxx_0, '0']
-- [blocks_complex_to_real_0, '0', fec_decode_ccsds_27_fb_0, '0']
-- [custom_channel_0, '0', blocks_complex_to_real_0, '0']
+- [custom_channel_0, '0', fec_decode_ccsds_27_fb_0, '0']
 - [epy_block_0, '0', custom_channel_0, '0']
 - [fec_decode_ccsds_27_fb_0, '0', pad_sink_0, '0']
 - [fec_encode_ccsds_27_bb_0, '0', epy_block_0, '0']

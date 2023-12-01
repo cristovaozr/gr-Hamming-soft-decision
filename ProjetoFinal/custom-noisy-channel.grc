@@ -42,7 +42,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     num_inputs: '2'
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
@@ -60,7 +60,7 @@ blocks:
     const: noise_voltage
     maxoutbuf: '0'
     minoutbuf: '0'
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
@@ -95,7 +95,7 @@ blocks:
     label: out
     num_streams: '1'
     optional: 'False'
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
@@ -115,7 +115,7 @@ blocks:
     minoutbuf: '0'
     num_streams: '1'
     optional: 'False'
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
@@ -135,7 +135,7 @@ blocks:
     minoutbuf: '0'
     num_streams: '1'
     optional: 'False'
-    type: complex
+    type: float
     vlen: '1'
   states:
     bus_sink: false
