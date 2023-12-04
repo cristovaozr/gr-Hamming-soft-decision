@@ -1,0 +1,30 @@
+#ifndef BPSK_SIMULATION_H_
+#define BPSK_SIMULATION_H_
+
+#include "simulation.h"
+
+#include <cstdint>
+#include <itpp/itcomm.h>
+
+class BpskSimulation : public Simulation {
+
+public:
+
+    BpskSimulation(int32_t nbits = 500000, int32_t MaxIterations = 10, int32_t MaxErrors = 100);
+    virtual ~BpskSimulation();
+
+    int32_t Run() override;
+
+private:
+    int32_t Nbits;
+    int32_t MaxIterations;
+    int32_t MaxErrors;
+    // double N0;
+    // itpp::BPSK bpsk;
+    // itpp::BERC berc;
+    // itpp::AWGN_Channel awgn_channel;
+    // itpp::bvec bits, dec_bits;
+    // itpp::vec symbols, rec;
+};
+
+#endif
