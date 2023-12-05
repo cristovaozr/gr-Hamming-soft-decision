@@ -19,12 +19,6 @@ private:
     int32_t Nbits;
     int32_t MaxIterations;
     int32_t MaxErrors;
-    // double N0;
-    // itpp::BPSK bpsk;
-    // itpp::BERC berc;
-    // itpp::AWGN_Channel awgn_channel;
-    // itpp::bvec bits, dec_bits;
-    // itpp::vec symbols, rec;
 };
 
 #endif

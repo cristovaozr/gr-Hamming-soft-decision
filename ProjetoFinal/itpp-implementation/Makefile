@@ -4,7 +4,10 @@ CXXFLAGS += -O0 -ggdb -DNDEBUG
 LIBS += -litpp
 INCLUDEDIR += 
 
-SRC += main.cpp rs.cpp convcode.cpp bpsk.cpp
+SRC += main.cpp \
+	simulation.cpp \
+	bpsk-simulation.cpp \
+	rs-simulation.cpp
 
 OBJ := $(SRC:.cpp=.o)
 

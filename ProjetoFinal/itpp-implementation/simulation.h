@@ -14,6 +14,7 @@ public:
 
     enum SimulationSuccess {
         E_WRONG_PARAMETER = INT32_MIN,
+        E_DECODING_FAILED,
 
         E_SUCCESS = 0
     };

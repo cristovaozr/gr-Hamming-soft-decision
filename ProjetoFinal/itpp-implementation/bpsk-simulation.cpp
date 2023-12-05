@@ -19,7 +19,7 @@ BpskSimulation::~BpskSimulation()
 
 int32_t BpskSimulation::Run()
 {
-    vec EbN0dB = linspace(0, 4, 8);
+    vec EbN0dB = linspace(0, 4, 16);
     vec EbN0 = inv_dB(EbN0dB);
 
     AWGN_Channel awgn_Channel;
@@ -58,9 +58,9 @@ int32_t BpskSimulation::Run()
     }
 
     std::cout << "Resultado final: " << std::endl;
-    std::cout << "ber, ebn0db, ebn0" << std::endl;
+    std::cout << "ber, ebn0db" << std::endl;
     for (int32_t i = 0; i < ber.length(); i++) {
-        std::cout << ber(i) << ", " << EbN0dB(i) << ", " << EbN0(i) << std::endl;
+        std::cout << ber(i) << ", " << EbN0dB(i) << std::endl;
     }
 
     return SimulationSuccess::E_SUCCESS;

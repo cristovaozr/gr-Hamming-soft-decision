@@ -2,6 +2,7 @@
 
 #include "simulation.h"
 #include "bpsk-simulation.h"
+#include "rs-simulation.h"
 
 int main(int argc, char **argv)
 {
@@ -14,10 +15,17 @@ int main(int argc, char **argv)
     std::cout << "\t* Código concatenado RS(255, 223) com CC(R=0.5, K=7) BPSK AWGN" << std::endl;
 
     BpskSimulation bpsk_sim;
+    RsSimulation rs_sim(8*223*1000);
 
     int32_t st = bpsk_sim.Run();
     if (st != Simulation::E_SUCCESS) {
-        std::cout << "Erro na execução da simulação BPSK!" << std::endl;
+        std::cout << "Erro na execução da simulação do BPSK!" << std::endl;
+        goto exit;
+    }
+
+    st = rs_sim.Run();
+    if (st != Simulation::E_SUCCESS) {
+        std::cout << "Erro na execução da simulação do ReedSolomon!" << std::endl;
         goto exit;
     }
 
