@@ -201,7 +201,7 @@ blocks:
     color8: '"dark red"'
     color9: '"dark green"'
     comment: ''
-    curvenames: '[''RS(255,223)'', ''BPSK AWGN'']'
+    curvenames: '[]'
     esno: esno
     gui_hint: ''
     label1: RS(255,223)

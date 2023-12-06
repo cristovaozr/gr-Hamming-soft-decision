@@ -8,6 +8,7 @@ using namespace itpp;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Código copiado para evitar "quebra" do IT++
+#if 0
 GFX formal_derivate(const GFX &f)
 {
   int degree = f.get_true_degree();
@@ -178,6 +179,7 @@ bool Reed_Solomon::decode(const bvec &coded_bits, const ivec &erasure_positions,
   return no_dec_failure;
 }
 
+#endif
 ///////////////////////////////////////////////////////////////////////////////
 
 RsSimulation::RsSimulation(int32_t nbits, int32_t MaxIterations, int32_t MaxErrors) :
@@ -191,15 +193,26 @@ RsSimulation::~RsSimulation()
 
 }
 
-int32_t RsSimulation::Run()
+static void dbg_print(bvec &vec)
 {
-    vec EbN0dB = linspace(0, 4, 16);
+    std::cout << "vec=[";
+    for (int i = 0; i < 64; i++) {
+        std::cout << vec[i] << " ";
+    }
+    std::cout << std::endl;
+}
+
+int32_t RsSimulation::Run(vec &EbN0dB)
+{
+    int32_t ret = E_SUCCESS;
+
+    // vec EbN0dB = linspace(0, 4, 16);
     vec EbN0 = inv_dB(EbN0dB);
 
     AWGN_Channel awgn_Channel;
     BPSK bpsk;
     BERC berc;
-    Reed_Solomon rs(8, 16);
+    Reed_Solomon rs(3, 1);
 
     vec ber;
     ber.set_size(EbN0dB.length(), false);
@@ -219,37 +232,54 @@ int32_t RsSimulation::Run()
         awgn_Channel.set_noise(N0(p) / 2.0);
 
         for (int32_t i = 0; i < this->MaxIterations; i++) {
-            bvec rec_bits, bits = randb(this->Nbits);
+            bvec bits, rec_bits, coded_bits;
+            bits = randb(this->Nbits);
+            // std::cout << "bits         "; dbg_print(bits);
             // Encode RS(255, 223)
-            bvec coded_bits = rs.encode(bits);
-            vec trans_symbols;
+            coded_bits = rs.encode(bits);
+            // std::cout << "coded_bits   "; dbg_print(coded_bits);
+
             // Modular BPSK
+            vec trans_symbols;
             bpsk.modulate_bits(coded_bits, trans_symbols);
+
             // Passar no canal AWGN
             vec rec_symbols = awgn_Channel(trans_symbols);
+
             // Demodular BPSK
             bpsk.demodulate_bits(rec_symbols, rec_bits);
+            // std::cout << "rec_bits     "; dbg_print(rec_bits);
+
             // Decode RS(255, 223)
             bvec decoded_bits;
             bvec cw_isvalid;
-            if (rs.decode(rec_bits, decoded_bits, cw_isvalid) == false) {
-                std::cout << "Oopsie poosie..." << std::endl;
-                return E_DECODING_FAILED;
-            }
-            berc.count(bits, rec_bits);
+            rs.decode(rec_bits, decoded_bits, cw_isvalid);
+
+            // Print bits
+            // std::cout << "decoded_bits "; dbg_print(decoded_bits);
+            // std::cout << "cw_isvalid   "; dbg_print(cw_isvalid);
+
+            berc.count(bits, decoded_bits);
             ber(p) = berc.get_errorrate();
             if (berc.get_errors() > this->MaxErrors) {
                 std::cout << "Saindo do ponto " << p + 1 << " com " << berc.get_errors() << " erros." << std::endl;
                 break;
             }
+
         }
     }
 
-    std::cout << "Resultado final: " << std::endl;
+    std::ofstream csvfile("rs.csv");
+
+    std::cout << "ReedSolomon ***** Resultado final: " << std::endl;
     std::cout << "ber, ebn0db" << std::endl;
+    csvfile << "ber, ebn0db" << std::endl;
     for (int32_t i = 0; i < ber.length(); i++) {
         std::cout << ber(i) << ", " << EbN0dB(i) << std::endl;
+        csvfile << ber(i) << ", " << EbN0dB(i) << std::endl;
     }
 
-    return SimulationSuccess::E_SUCCESS;
+    csvfile.close();
+
+    return ret;
 }

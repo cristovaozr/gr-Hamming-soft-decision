@@ -7,7 +7,8 @@ INCLUDEDIR +=
 SRC += main.cpp \
 	simulation.cpp \
 	bpsk-simulation.cpp \
-	rs-simulation.cpp
+	rs-simulation.cpp \
+	cc-simulation.cpp
 
 OBJ := $(SRC:.cpp=.o)
 

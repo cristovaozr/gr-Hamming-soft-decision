@@ -3,6 +3,8 @@
 
 #include <cstdint>
 
+#include <itpp/itcomm.h>
+
 class Simulation {
 
 public:
@@ -10,7 +12,7 @@ public:
     Simulation();
     virtual ~Simulation();
 
-    virtual int32_t Run() = 0;
+    virtual int32_t Run(itpp::vec &EbN0dB) = 0;
 
     enum SimulationSuccess {
         E_WRONG_PARAMETER = INT32_MIN,

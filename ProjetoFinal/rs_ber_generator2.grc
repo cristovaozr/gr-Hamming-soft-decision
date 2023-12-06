@@ -348,7 +348,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(0/10)
+    noise_voltage: 10**-(0/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -364,7 +364,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(1/10)
+    noise_voltage: 10**-(1/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -380,7 +380,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(3/10)
+    noise_voltage: 10**-(3/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -396,7 +396,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(7/10)
+    noise_voltage: 10**-(7/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -412,7 +412,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(5/10)
+    noise_voltage: 10**-(5/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -428,7 +428,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(2/10)
+    noise_voltage: 10**-(2/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -444,7 +444,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(6/10)
+    noise_voltage: 10**-(6/10)/0.875
   states:
     bus_sink: false
     bus_source: false
@@ -460,7 +460,7 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: 10**-(4/10)
+    noise_voltage: 10**-(4/10)/0.875
   states:
     bus_sink: false
     bus_source: false
