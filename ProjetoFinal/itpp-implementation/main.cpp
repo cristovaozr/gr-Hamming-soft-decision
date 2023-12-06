@@ -4,6 +4,7 @@
 #include "bpsk-simulation.h"
 #include "rs-simulation.h"
 #include "cc-simulation.h"
+#include "conc-simulation.h"
 
 int main(int argc, char **argv)
 {
@@ -13,13 +14,15 @@ int main(int argc, char **argv)
     std::cout << "\t* Canal BPSK AWGN" << std::endl;
     std::cout << "\t* Reed-Solomon RS(255, 223) sobre canal BPSK AWGN" << std::endl;
     std::cout << "\t* Código convolucional CC (R=0.5,K=7) sobre BPSK AWGN" << std::endl;
-    // std::cout << "\t* Código concatenado RS(255, 223) com CC(R=0.5, K=7) BPSK AWGN" << std::endl;
+    std::cout << "\t* Código concatenado RS(255, 223) com CC(R=0.5, K=7) BPSK AWGN" << std::endl;
 
     itpp::vec EbN0dB = itpp::linspace(0, 8, 16);
 
-    BpskSimulation bpsk_sim;
-    RsSimulation rs_sim(4*3*10000);
-    CcSimulation cc_sim(10000);
+    BpskSimulation bpsk_sim(100000);
+    RsSimulation rs_sim(4*3*100000);
+    CcSimulation cc_sim(100000);
+    ConcSimulation conc_sim(4*3*100000);
+
     int32_t st;
 
     st = bpsk_sim.Run(EbN0dB);
@@ -37,6 +40,12 @@ int main(int argc, char **argv)
     st = cc_sim.Run(EbN0dB);
     if (st != Simulation::E_SUCCESS) {
         std::cout << "Erro na execução da simulação do Código Convolucional!" << std::endl;
+        // goto exit;
+    }
+
+    st = conc_sim.Run(EbN0dB);
+    if (st != Simulation::E_SUCCESS) {
+        std::cout << "Erro na execução da simulação do Código Concatenado!" << std::endl;
         // goto exit;
     }
 

@@ -8,7 +8,8 @@ SRC += main.cpp \
 	simulation.cpp \
 	bpsk-simulation.cpp \
 	rs-simulation.cpp \
-	cc-simulation.cpp
+	cc-simulation.cpp \
+	conc-simulation.cpp
 
 OBJ := $(SRC:.cpp=.o)
 
