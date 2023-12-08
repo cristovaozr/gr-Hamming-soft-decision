@@ -47,8 +47,11 @@ int32_t BpskSimulation::Run(vec &EbN0dB)
             vec rec_symbols = awgn_Channel(trans_symbols);
             // Demodular BPSK
             bpsk.demodulate_bits(rec_symbols, rec_bits);
+
             berc.count(bits, rec_bits);
-            ber(p) = berc.get_errorrate();
+            double err_rate = berc.get_errorrate();
+            if (err_rate == 0.0) err_rate = 1e-8;
+            ber(p) = err_rate;
             if (berc.get_errors() > this->MaxErrors) {
                 std::cout << "Saindo do ponto " << p + 1 << " com " << berc.get_errors() << " erros." << std::endl;
                 break;

@@ -19,9 +19,9 @@ int main(int argc, char **argv)
     itpp::vec EbN0dB = itpp::linspace(0, 8, 16);
 
     BpskSimulation bpsk_sim(100000);
-    RsSimulation rs_sim(4*3*100000);
+    RsSimulation rs_sim(8*223*57); // m * k * NumCodewords
     CcSimulation cc_sim(100000);
-    ConcSimulation conc_sim(4*3*100000);
+    ConcSimulation conc_sim(8*223*57);
 
     int32_t st;
 

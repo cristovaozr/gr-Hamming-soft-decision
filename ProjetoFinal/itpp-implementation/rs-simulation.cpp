@@ -8,7 +8,7 @@ using namespace itpp;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Código copiado para evitar "quebra" do IT++
-#if 0
+#if 1
 GFX formal_derivate(const GFX &f)
 {
   int degree = f.get_true_degree();
@@ -212,7 +212,7 @@ int32_t RsSimulation::Run(vec &EbN0dB)
     AWGN_Channel awgn_Channel;
     BPSK bpsk;
     BERC berc;
-    Reed_Solomon rs(3, 1);
+    Reed_Solomon rs(8, 16); // m = 3, t = 1
 
     vec ber;
     ber.set_size(EbN0dB.length(), false);
@@ -260,7 +260,9 @@ int32_t RsSimulation::Run(vec &EbN0dB)
             // std::cout << "cw_isvalid   "; dbg_print(cw_isvalid);
 
             berc.count(bits, decoded_bits);
-            ber(p) = berc.get_errorrate();
+            double err_rate = berc.get_errorrate();
+            if (err_rate == 0.0) err_rate = 1e-8;
+            ber(p) = err_rate;
             if (berc.get_errors() > this->MaxErrors) {
                 std::cout << "Saindo do ponto " << p + 1 << " com " << berc.get_errors() << " erros." << std::endl;
                 break;
