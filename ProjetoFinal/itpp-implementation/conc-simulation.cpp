@@ -27,9 +27,10 @@ int32_t ConcSimulation::Run(vec &EbN0dB)
     AWGN_Channel awgn_Channel;
     BPSK bpsk;
     BERC berc;
-    Reed_Solomon rs(3, 1);
+    Reed_Solomon rs(8, 16);
     Convolutional_Code cc;
     ivec generators;
+    Block_Interleaver<double> interleaver(2, 8*223);
 
     generators.set_size(3, false);
     generators(0) = 0133;
@@ -68,8 +69,14 @@ int32_t ConcSimulation::Run(vec &EbN0dB)
             vec trans_symbols;
             bpsk.modulate_bits(coded_bits, trans_symbols);
 
+            // Interleaving
+            vec interleaved_symbols = interleaver.interleave(trans_symbols);
+
             // Passar no canal AWGN
-            vec rec_symbols = awgn_Channel(trans_symbols);
+            vec rec_interleaved = awgn_Channel(interleaved_symbols);
+
+            // Deinterleaving
+            vec rec_symbols = interleaver.deinterleave(rec_interleaved);
 
             // Decodificação CC -- soft decision
             bvec decoded_bits, rs_decoded_bits;
@@ -78,7 +85,6 @@ int32_t ConcSimulation::Run(vec &EbN0dB)
             // Decode RS(7, 4)
             bvec cw_isvalid;
             rs.decode(rs_decoded_bits, decoded_bits, cw_isvalid);
-
 
             berc.count(bits, decoded_bits);
             double err_rate = berc.get_errorrate();
