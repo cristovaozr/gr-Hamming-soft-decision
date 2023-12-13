@@ -56,13 +56,17 @@ int32_t CcSimulation::Run(vec &EbN0dB)
         for (int32_t i = 0; i < this->MaxIterations; i++) {
             bvec bits, rec_bits, coded_bits;
             bits = randb(this->Nbits);
+
             // Encode CC
             coded_bits = cc.encode(bits);
-            vec trans_symbols;
+
             // Modular BPSK
+            vec trans_symbols;
             bpsk.modulate_bits(coded_bits, trans_symbols);
+
             // Passar no canal AWGN
             vec rec_symbols = awgn_Channel(trans_symbols);
+
             // Decode CC -- soft decision
             bvec decoded_bits;
             decoded_bits = cc.decode(rec_symbols);

@@ -193,26 +193,16 @@ RsSimulation::~RsSimulation()
 
 }
 
-static void dbg_print(bvec &vec)
-{
-    std::cout << "vec=[";
-    for (int i = 0; i < 64; i++) {
-        std::cout << vec[i] << " ";
-    }
-    std::cout << std::endl;
-}
-
 int32_t RsSimulation::Run(vec &EbN0dB)
 {
     int32_t ret = E_SUCCESS;
 
-    // vec EbN0dB = linspace(0, 4, 16);
     vec EbN0 = inv_dB(EbN0dB);
 
     AWGN_Channel awgn_Channel;
     BPSK bpsk;
     BERC berc;
-    Reed_Solomon rs(8, 16); // m = 3, t = 1
+    Reed_Solomon rs(8, 16); // m = 8, t = 16
 
     vec ber;
     ber.set_size(EbN0dB.length(), false);
@@ -234,10 +224,8 @@ int32_t RsSimulation::Run(vec &EbN0dB)
         for (int32_t i = 0; i < this->MaxIterations; i++) {
             bvec bits, rec_bits, coded_bits;
             bits = randb(this->Nbits);
-            // std::cout << "bits         "; dbg_print(bits);
             // Encode RS(255, 223)
             coded_bits = rs.encode(bits);
-            // std::cout << "coded_bits   "; dbg_print(coded_bits);
 
             // Modular BPSK
             vec trans_symbols;
@@ -248,16 +236,11 @@ int32_t RsSimulation::Run(vec &EbN0dB)
 
             // Demodular BPSK
             bpsk.demodulate_bits(rec_symbols, rec_bits);
-            // std::cout << "rec_bits     "; dbg_print(rec_bits);
 
             // Decode RS(255, 223)
             bvec decoded_bits;
             bvec cw_isvalid;
             rs.decode(rec_bits, decoded_bits, cw_isvalid);
-
-            // Print bits
-            // std::cout << "decoded_bits "; dbg_print(decoded_bits);
-            // std::cout << "cw_isvalid   "; dbg_print(cw_isvalid);
 
             berc.count(bits, decoded_bits);
             double err_rate = berc.get_errorrate();

@@ -18,35 +18,31 @@ int main(int argc, char **argv)
 
     itpp::vec EbN0dB = itpp::linspace(0, 8, 16);
 
-    BpskSimulation bpsk_sim(100000);
-    RsSimulation rs_sim(8*223*57); // m * k * NumCodewords
-    CcSimulation cc_sim(100000);
-    ConcSimulation conc_sim(8*223*57);
+    BpskSimulation bpsk_sim(1000000);
+    RsSimulation rs_sim(8*223*561); // m * k * NumCodewords
+    CcSimulation cc_sim(1000000);
+    ConcSimulation conc_sim(8*223*561);
 
     int32_t st;
 
     st = bpsk_sim.Run(EbN0dB);
     if (st != Simulation::E_SUCCESS) {
         std::cout << "Erro na execução da simulação do BPSK!" << std::endl;
-        // goto exit;
     }
 
     st = rs_sim.Run(EbN0dB);
     if (st != Simulation::E_SUCCESS) {
         std::cout << "Erro na execução da simulação do ReedSolomon!" << std::endl;
-        // goto exit;
     }
 
     st = cc_sim.Run(EbN0dB);
     if (st != Simulation::E_SUCCESS) {
         std::cout << "Erro na execução da simulação do Código Convolucional!" << std::endl;
-        // goto exit;
     }
 
     st = conc_sim.Run(EbN0dB);
     if (st != Simulation::E_SUCCESS) {
         std::cout << "Erro na execução da simulação do Código Concatenado!" << std::endl;
-        // goto exit;
     }
 
     exit:

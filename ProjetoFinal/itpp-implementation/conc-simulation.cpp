@@ -21,7 +21,6 @@ int32_t ConcSimulation::Run(vec &EbN0dB)
 {
     int32_t ret = E_SUCCESS;
 
-    // vec EbN0dB = linspace(0, 4, 16);
     vec EbN0 = inv_dB(EbN0dB);
 
     AWGN_Channel awgn_Channel;
@@ -60,7 +59,7 @@ int32_t ConcSimulation::Run(vec &EbN0dB)
             bvec bits, rec_bits, coded_bits, rs_coded_bits;
             bits = randb(this->Nbits);
 
-            // Encode RS(7, 4)
+            // Encode RS(255, 223)
             rs_coded_bits = rs.encode(bits);
 
             coded_bits = cc.encode(rs_coded_bits);
@@ -82,7 +81,7 @@ int32_t ConcSimulation::Run(vec &EbN0dB)
             bvec decoded_bits, rs_decoded_bits;
             rs_decoded_bits = cc.decode(rec_symbols);
 
-            // Decode RS(7, 4)
+            // Decode RS(255, 223)
             bvec cw_isvalid;
             rs.decode(rs_decoded_bits, decoded_bits, cw_isvalid);
 

@@ -11,5 +11,5 @@ grid on;
 ylabel("Probabilidade de erro");
 xlabel("Eb/N0 (dB)");
 title("BER simulado");
-legend("BPSK AWGN", "RS (7,4)", "CC (R=.5,K=7)", "Cód. Conc.");
+legend("BPSK AWGN", "RS (255,223)", "CC (R=1/2,K=7)", "Cód. Conc.");
 print('output.jpg', "-S1200,900")
